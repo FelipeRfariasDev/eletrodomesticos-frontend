@@ -1,2 +1,8 @@
-<a [routerLink]="['/']">Inicio</a> |
-<a [routerLink]="['/listar-produtos']">Produtos</a>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link"><a [routerLink]="['/listar-produtos']">Produtos</a></a>
+  </li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-link text-decoration-none"><a [routerLink]="['/']">Inicio</a></button>
+  </li>
+</ul>
