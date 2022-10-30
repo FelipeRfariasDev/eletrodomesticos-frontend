@@ -17,6 +17,8 @@ export class ListarProdutosComponent implements OnInit {
   protected msgSuccess:string='';
   protected msgErrors:string='';
 
+  protected exibirConfirmacaoExcluir:boolean = false;
+
   constructor(
     private produtosService: ProdutosService,
     private mensagensService: MensagensService,
@@ -40,6 +42,24 @@ export class ListarProdutosComponent implements OnInit {
   alterar(produto:Produto){
     this.produtosService.setProdutoSelecionado(produto);
     this.router.navigate(['/alterar-produtos']);
+  }
+
+  excluir(){
+    let produtoSelecionado = this.produtosService.getProdutoSelecionado();
+    this.produtosService.delete(produtoSelecionado.id).subscribe((response: any) => {
+      if(response.success==true){
+        this.msgSuccess = response.message;
+        this.exibirConfirmacaoExcluir = false;
+        this.getAll();
+      }
+    }, error => {
+      this.msgErrors = (error.error.message);
+    });
+  }
+
+  confirmacaoExcluir(produto:any){
+    this.produtosService.setProdutoSelecionado(produto);
+    this.exibirConfirmacaoExcluir = true;
   }
 
 }

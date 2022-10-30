@@ -25,6 +25,10 @@ export class ProdutosService {
     return this.http.put(this.baseUrl+'produtos/'+produto.id,produto);
   }
 
+  delete(id:any){
+    return this.http.delete(this.baseUrl+'produtos/'+id);
+  }
+
   setProdutoSelecionado(produto:Produto){
     this.produtoSelecionado = produto;
   }

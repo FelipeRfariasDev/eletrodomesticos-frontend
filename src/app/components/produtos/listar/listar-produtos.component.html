@@ -1,13 +1,25 @@
 <h1>{{title}} <span class="btn btn-success" [routerLink]="['/adicionar-produtos']">Adicionar</span></h1>
 
-
-<div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msgSuccess">
   {{msgSuccess}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
-<div class="alert alert-danger" role="alert" *ngIf="msgErrors">
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="msgErrors">
   {{msgErrors}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="exibirConfirmacaoExcluir">
+  Tem certeza que deseja remover?
+
+  <button type="button" class="btn btn-success" (click)="excluir()">SIM</button> &nbsp;
+
+  <button type="button" class="btn btn-primary" (click)="exibirConfirmacaoExcluir=false">CANCELAR</button>
+
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 
 <div class="list-group">
   <span *ngFor="let produto of produtos">
@@ -16,7 +28,7 @@
         <h5 class="mb-1">{{produto.nome}}</h5>
         <span class="text-right">
           <button type="button" class="btn btn-primary" (click)="alterar(produto)">Alterar</button>
-          <button type="button" href="javascript:alert('Excluir1')" class="btn btn-danger">Excluir</button>
+          <button type="button" (click)="confirmacaoExcluir(produto)" class="btn btn-danger">Excluir</button>
         </span>
       </div>
       <p class="mb-1">{{produto.descricao}}</p>
@@ -24,5 +36,4 @@
       <p class="mb-1"><small>Tensão: {{produto.tensao}}</small></p>
     </a>
   </span>
-
 </div>
