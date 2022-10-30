@@ -13,6 +13,7 @@ import { ListarProdutosComponent } from './components/produtos/listar/listar-pro
 import { AlterarProdutosComponent } from './components/produtos/alterar/alterar-produtos.component';
 
 import { ProdutosService } from './services/produtos.service';
+import { MensagensService } from './services/mensagens.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ProdutosService } from './services/produtos.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProdutosService],
+  providers: [ProdutosService,MensagensService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

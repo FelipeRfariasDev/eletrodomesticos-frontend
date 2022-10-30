@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { MensagensService } from 'src/app/services/mensagens.service';
 import { ProdutosService } from 'src/app/services/produtos.service';
 import { Produto } from '../../../model/produto';
 
@@ -8,7 +9,7 @@ import { Produto } from '../../../model/produto';
   selector: 'app-adicionar-produtos.component',
   templateUrl: './adicionar-produtos.component.html'
 })
-export class AdicionarProdutosComponent {
+export class AdicionarProdutosComponent implements OnInit {
 
   title='Adicionar Produto';
 
@@ -19,19 +20,25 @@ export class AdicionarProdutosComponent {
   constructor(
     private formBuilder: FormBuilder,
     private produtosService: ProdutosService,
+    private mensagensService: MensagensService,
     private router: Router,
     ) {
-    this.carregarFormulario(formBuilder);
+  }
+
+  ngOnInit(): void {
+    this.carregarFormulario(this.formBuilder);
   }
 
   post(){
     this.produto = this.form.value;
     this.produtosService.post(this.produto).subscribe((response: any) => {
       if(response.success==true){
+        this.mensagensService.setMsgSuccess(response.message);
         this.router.navigate(['/listar-produtos']);
       }
     }, error => {
-      console.log(error);
+      this.mensagensService.setMsgErrors(error.error.message);
+      this.router.navigate(['/listar-produtos']);
     });
   }
 

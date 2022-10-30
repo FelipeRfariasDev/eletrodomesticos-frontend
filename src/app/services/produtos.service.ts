@@ -8,7 +8,8 @@ import { Produto } from '../model/produto';
 })
 export class ProdutosService {
 
-  baseUrl : string = environment.baseUrl;
+  private baseUrl : string = environment.baseUrl;
+  private produtoSelecionado:Produto = new Produto();
 
   constructor(private http: HttpClient) {}
 
@@ -18,5 +19,17 @@ export class ProdutosService {
 
   post(produto:Produto){
     return this.http.post(this.baseUrl+'produtos',produto);
+  }
+
+  put(produto:Produto){
+    return this.http.put(this.baseUrl+'produtos/'+produto.id,produto);
+  }
+
+  setProdutoSelecionado(produto:Produto){
+    this.produtoSelecionado = produto;
+  }
+
+  getProdutoSelecionado():Produto{
+      return this.produtoSelecionado;
   }
 }

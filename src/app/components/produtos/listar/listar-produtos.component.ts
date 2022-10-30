@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { ProdutosService } from '../../../services/produtos.service';
 import { Produto } from '../../../model/produto';
+import { Router } from '@angular/router';
+import { MensagensService } from 'src/app/services/mensagens.service';
 
 @Component({
   selector: 'app-listar-produtos.component',
@@ -8,21 +10,36 @@ import { Produto } from '../../../model/produto';
 })
 export class ListarProdutosComponent implements OnInit {
 
-  title='Listar Produtos';
-  produtos: Produto[] = [];
+  protected title='Listar Produtos';
 
-  constructor(private produtosService: ProdutosService) {}
+  protected produtos: Produto[] = [];
+
+  protected msgSuccess:string='';
+  protected msgErrors:string='';
+
+  constructor(
+    private produtosService: ProdutosService,
+    private mensagensService: MensagensService,
+    private router: Router,
+    ) {}
 
   ngOnInit(): void {
     this.getAll();
+    this.msgSuccess = this.mensagensService.getMsgSuccess();
+    this.msgErrors = this.mensagensService.getMsgErrors();
   }
 
   getAll(){
     this.produtosService.getAll().subscribe((response: any) => {
       this.produtos = (response.produtos);
     }, error => {
-      console.log(error);
+      this.msgErrors = (error.error.message);
     });
+  }
+
+  alterar(produto:Produto){
+    this.produtosService.setProdutoSelecionado(produto);
+    this.router.navigate(['/alterar-produtos']);
   }
 
 }

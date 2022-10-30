@@ -1,12 +1,21 @@
 <h1>{{title}} <span class="btn btn-success" [routerLink]="['/adicionar-produtos']">Adicionar</span></h1>
 
+
+<div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+  {{msgSuccess}}
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="msgErrors">
+  {{msgErrors}}
+</div>
+
 <div class="list-group">
   <span *ngFor="let produto of produtos">
     <a class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{produto.nome}}</h5>
         <span class="text-right">
-          <button type="button" class="btn btn-primary" [routerLink]="['/alterar-produtos']">Alterar</button>
+          <button type="button" class="btn btn-primary" (click)="alterar(produto)">Alterar</button>
           <button type="button" href="javascript:alert('Excluir1')" class="btn btn-danger">Excluir</button>
         </span>
       </div>
