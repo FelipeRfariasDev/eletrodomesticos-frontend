@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +11,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AdicionarProdutosComponent } from './components/produtos/adicionar/adicionar-produtos.component';
 import { ListarProdutosComponent } from './components/produtos/listar/listar-produtos.component';
 import { AlterarProdutosComponent } from './components/produtos/alterar/alterar-produtos.component';
+
+import { ProdutosService } from './services/produtos.service';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,10 @@ import { AlterarProdutosComponent } from './components/produtos/alterar/alterar-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProdutosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

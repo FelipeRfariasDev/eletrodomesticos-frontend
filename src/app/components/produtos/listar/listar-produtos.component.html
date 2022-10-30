@@ -1,34 +1,18 @@
 <h1>{{title}} <span class="btn btn-success" [routerLink]="['/adicionar-produtos']">Adicionar</span></h1>
 
 <div class="list-group">
-
-  <span>
+  <span *ngFor="let produto of produtos">
     <a class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Geladeira Frost Free1</h5>
+        <h5 class="mb-1">{{produto.nome}}</h5>
         <span class="text-right">
           <button type="button" class="btn btn-primary" [routerLink]="['/alterar-produtos']">Alterar</button>
           <button type="button" href="javascript:alert('Excluir1')" class="btn btn-danger">Excluir</button>
         </span>
       </div>
-      <p class="mb-1">Este produto é totalmente versátil. Tudo para ser personalizado para comportar o que você preferir</p>
-      <p class="mb-1"><small>Marca: Electrolux</small></p>
-      <p class="mb-1"><small>Tensão: 220v</small></p>
-    </a>
-  </span>
-
-  <span>
-    <a class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Geladeira Frost Free2</h5>
-        <span class="text-right">
-          <button type="button" class="btn btn-primary" [routerLink]="['/alterar-produtos']">Alterar</button>
-          <button type="button" href="javascript:alert('Excluir1')" class="btn btn-danger">Excluir</button>
-        </span>
-      </div>
-      <p class="mb-1">Este produto é totalmente versátil. Tudo para ser personalizado para comportar o que você preferir</p>
-      <p class="mb-1"><small>Marca: Electrolux</small></p>
-      <p class="mb-1"><small>Tensão: 220v</small></p>
+      <p class="mb-1">{{produto.descricao}}</p>
+      <p class="mb-1"><small>Marca: {{produto.marca}}</small></p>
+      <p class="mb-1"><small>Tensão: {{produto.tensao}}</small></p>
     </a>
   </span>
 
