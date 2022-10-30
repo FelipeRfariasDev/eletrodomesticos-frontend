@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProdutosService } from 'src/app/services/produtos.service';
 import { Produto } from '../../../model/produto';
 
 @Component({
@@ -14,13 +16,23 @@ export class AdicionarProdutosComponent {
 
   produto = new Produto();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private produtosService: ProdutosService,
+    private router: Router,
+    ) {
     this.carregarFormulario(formBuilder);
   }
 
   post(){
-    console.log(this.form.valid);
-    console.log(this.form.value);
+    this.produto = this.form.value;
+    this.produtosService.post(this.produto).subscribe((response: any) => {
+      if(response.success==true){
+        this.router.navigate(['/listar-produtos']);
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   carregarFormulario(formBuilder:FormBuilder) {
