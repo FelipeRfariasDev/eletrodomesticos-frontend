@@ -1,0 +1,38 @@
+<h1>Adicionar Produto <span class="btn btn-secondary" [routerLink]="['/listar-produtos']">Voltar</span></h1>
+
+<form [formGroup]="form">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" formControlName="nome">
+        <span *ngIf="!this.form.get('nome')?.valid" class="badge bg-danger">campo obrigatório</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-control" rows="3" formControlName="descricao"></textarea>
+        <span *ngIf="!this.form.get('descricao')?.valid" class="badge bg-danger">campo obrigatório</span>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tensão</label>
+      <select formControlName="tensao">
+        <option value=""></option>
+        <option value="110V">110V</option>
+        <option value="220V">220V</option>
+      </select>
+      <span *ngIf="!this.form.get('tensao')?.valid" class="badge bg-danger">campo obrigatório</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Marca</label>
+        <select formControlName="marca">
+          <option value=""></option>
+          <option value="Electrolux">Electrolux</option>
+          <option value="Brastemp">Brastemp</option>
+          <option value="Fischer">Fischer</option>
+          <option value="Samsung">Samsung</option>
+          <option value="LG">LG</option>
+        </select>
+        <span *ngIf="!this.form.get('marca')?.valid" class="badge bg-danger">campo obrigatório</span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" [disabled]="!this.form.valid" class="btn btn-success mb-3">Salvar</button>
+    </div>
+</form>
