@@ -1,15 +1,15 @@
 <h1>Adicionar Produto <span class="btn btn-secondary" [routerLink]="['/listar-produtos']">Voltar</span></h1>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (submit)="salvarProduto()">
     <div class="mb-3">
         <label class="form-label">Nome</label>
         <input type="text" class="form-control" formControlName="nome">
-        <span *ngIf="!this.form.get('nome')?.valid" class="badge bg-danger">campo obrigatório</span>
+        <span *ngIf="!this.form.get('nome')?.valid" class="badge bg-warning">Campo obrigatório (Entre 20 e 60 caracteres)</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Descrição</label>
         <textarea class="form-control" rows="3" formControlName="descricao"></textarea>
-        <span *ngIf="!this.form.get('descricao')?.valid" class="badge bg-danger">campo obrigatório</span>
+        <span *ngIf="!this.form.get('descricao')?.valid" class="badge bg-warning">Campo obrigatório (Entre 98 e 300 caracteres)</span>
     </div>
     <div class="mb-3">
       <label class="form-label">Tensão</label>
@@ -18,7 +18,7 @@
         <option value="110V">110V</option>
         <option value="220V">220V</option>
       </select>
-      <span *ngIf="!this.form.get('tensao')?.valid" class="badge bg-danger">campo obrigatório</span>
+      <span *ngIf="!this.form.get('tensao')?.valid" class="badge bg-warning">Selecione uma opção</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Marca</label>
@@ -30,7 +30,7 @@
           <option value="Samsung">Samsung</option>
           <option value="LG">LG</option>
         </select>
-        <span *ngIf="!this.form.get('marca')?.valid" class="badge bg-danger">campo obrigatório</span>
+        <span *ngIf="!this.form.get('marca')?.valid" class="badge bg-warning">Selecione uma opção</span>
     </div>
     <div class="mb-3">
         <button type="submit" [disabled]="!this.form.valid" class="btn btn-success mb-3">Salvar</button>
