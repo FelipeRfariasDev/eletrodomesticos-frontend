@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AdicionarProdutosComponent } from './components/produtos/adicionar/adicionar-produtos.component';
 import { ListarProdutosComponent } from './components/produtos/listar/listar-produtos.component';
+import { AlterarProdutosComponent } from './components/produtos/alterar/alterar-produtos.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ListarProdutosComponent } from './components/produtos/listar/listar-pro
     HomeComponent,
     MenuComponent,
     ListarProdutosComponent,
-    AdicionarProdutosComponent
+    AdicionarProdutosComponent,
+    AlterarProdutosComponent
   ],
   imports: [
     BrowserModule,

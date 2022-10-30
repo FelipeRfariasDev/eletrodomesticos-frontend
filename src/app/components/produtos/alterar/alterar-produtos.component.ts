@@ -3,12 +3,12 @@ import { FormBuilder, Validators} from '@angular/forms';
 import { Produto } from '../../../model/produto';
 
 @Component({
-  selector: 'app-adicionar-produtos.component',
-  templateUrl: './adicionar-produtos.component.html'
+  selector: 'app-alterar-produtos.component',
+  templateUrl: './alterar-produtos.component.html'
 })
-export class AdicionarProdutosComponent {
+export class AlterarProdutosComponent {
 
-  title='Adicionar Produto';
+  title='Alterar Produto';
 
   form: any;
 
@@ -18,7 +18,7 @@ export class AdicionarProdutosComponent {
     this.carregarFormulario(formBuilder);
   }
 
-  post(){
+  put(){
     console.log(this.form.valid);
     console.log(this.form.value);
   }
