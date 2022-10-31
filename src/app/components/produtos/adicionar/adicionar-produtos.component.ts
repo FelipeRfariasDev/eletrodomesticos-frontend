@@ -44,8 +44,8 @@ export class AdicionarProdutosComponent implements OnInit {
 
   carregarFormulario(formBuilder:FormBuilder) {
     this.form = formBuilder.group({
-      nome: [this.produto.nome, [Validators.required,Validators.minLength(20),Validators.maxLength(60)]],
-      descricao: [this.produto.descricao, [Validators.required,Validators.minLength(98),Validators.maxLength(300)]],
+      nome: [this.produto.nome, [Validators.required,Validators.minLength(50),Validators.maxLength(100)]],
+      descricao: [this.produto.descricao, [Validators.required,Validators.minLength(80),Validators.maxLength(700)]],
       tensao: [this.produto.tensao, [Validators.required,Validators.minLength(4),Validators.maxLength(4)]],
       marca: [this.produto.marca, [Validators.required,Validators.minLength(2),Validators.maxLength(10)]],
     });

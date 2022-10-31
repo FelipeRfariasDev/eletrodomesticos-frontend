@@ -46,8 +46,8 @@ export class AlterarProdutosComponent implements OnInit {
   setAlimentarCamposFormulario(formBuilder:FormBuilder) {
     this.form = formBuilder.group({
       id: [this.produtoSelecionado.id, [Validators.required]],
-      nome: [this.produtoSelecionado.nome, [Validators.required,Validators.minLength(20),Validators.maxLength(60)]],
-      descricao: [this.produtoSelecionado.descricao, [Validators.required,Validators.minLength(98),Validators.maxLength(300)]],
+      nome: [this.produtoSelecionado.nome, [Validators.required,Validators.minLength(50),Validators.maxLength(100)]],
+      descricao: [this.produtoSelecionado.descricao, [Validators.required,Validators.minLength(80),Validators.maxLength(700)]],
       tensao: [this.produtoSelecionado.tensao, [Validators.required,Validators.minLength(4),Validators.maxLength(4)]],
       marca: [this.produtoSelecionado.marca, [Validators.required,Validators.minLength(2),Validators.maxLength(10)]],
     });

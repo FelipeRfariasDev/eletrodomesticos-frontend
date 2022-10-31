@@ -4,12 +4,12 @@
     <div class="mb-3">
         <label class="form-label">Nome</label>
         <input type="text" class="form-control" formControlName="nome">
-        <span *ngIf="!this.form.get('nome')?.valid" class="badge bg-warning">Campo obrigatório (Entre 20 e 60 caracteres)</span>
+        <span *ngIf="!this.form.get('nome')?.valid" class="badge bg-warning">Campo obrigatório (Entre 50 e 100 caracteres)</span>
     </div>
     <div class="mb-3">
         <label class="form-label">Descrição</label>
         <textarea class="form-control" rows="3" formControlName="descricao"></textarea>
-        <span *ngIf="!this.form.get('descricao')?.valid" class="badge bg-warning">Campo obrigatório (Entre 98 e 300 caracteres)</span>
+        <span *ngIf="!this.form.get('descricao')?.valid" class="badge bg-warning">Campo obrigatório (Entre 80 e 700 caracteres)</span>
     </div>
     <div class="mb-3">
       <label class="form-label">Tensão</label>
